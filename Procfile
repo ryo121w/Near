@@ -1,1 +1,1 @@
-web: ./start.sh && gunicorn mybackend.wsgi --log-file -
+web: ./start.sh
