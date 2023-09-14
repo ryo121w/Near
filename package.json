@@ -34,6 +34,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
+    "heroku-prebuild": "cd frontend",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
