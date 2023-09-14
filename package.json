@@ -37,7 +37,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "heroku-prebuild": "echo 'Skip this step or do some prebuild task'",
-    "heroku-postbuild": "cd frontend && npm install && npm run build",
+    "heroku-postbuild": " npm install && npm run build",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
