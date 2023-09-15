@@ -18,14 +18,8 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# 静的ファイルをどこに格納するか
 STATIC_URL = '/static/'
-# Reactのビルドファイルが含まれるディレクトリへのパス
-REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/build')
-
-STATICFILES_DIRS = [
-    REACT_APP_DIR,
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 API_ENDPOINT = os.environ.get('DJANGO_API_ENDPOINT', 'http://localhost:8000/')
