@@ -19,8 +19,9 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 API_ENDPOINT = os.environ.get('DJANGO_API_ENDPOINT', 'http://localhost:8000/')
 # Quick-start development settings - unsuitable for production
@@ -91,7 +92,7 @@ ROOT_URLCONF = "mybackend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [os.path.join(BASE_DIR, 'mybackend/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'mybackend/static')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
