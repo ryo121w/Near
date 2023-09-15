@@ -2,8 +2,10 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useExcelData } from './ExcelDataContext'; // ExcelDataContextからデータを取得するためのカスタムフック
-import styles from'./css/GraphComponent.module.css';
+import styles from './css/GraphComponent.module.css';
 import './css/Button.css';
+
+const BASE_API_URL = process.env.REACT_APP_API_ENDPOINT;
 
 function GraphComponent() {
   const [graphUrl, setGraphUrl] = useState(null);
@@ -43,7 +45,7 @@ function GraphComponent() {
     formData.append('concentrations', JSON.stringify(excelData));
 
     try {
-      const response = await axios.post('http://localhost:8000/api/upload/', formData);
+      const response = await axios.post(`${BASE_API_URL}api/upload/`, formData);
       if (response.data && response.data.graph_url) {
         setGraphUrl(response.data.graph_url);
         setShowGraph(true); // アニメーションを開始
@@ -60,26 +62,26 @@ function GraphComponent() {
         <h4 className={styles['NIR-title']}>NIRスペクトル</h4>
         <button className='unique-button' onClick={fetchGraph}> {/* Button の CSS Module を適用 */}
           <span className='span-mother'>
-              <span>G</span>
-              <span>e</span>
-              <span>n</span>
-              <span>e</span>
-              <span>r</span>
-              <span>a</span>
-              <span>t</span>
-              <span>e</span>
+            <span>G</span>
+            <span>e</span>
+            <span>n</span>
+            <span>e</span>
+            <span>r</span>
+            <span>a</span>
+            <span>t</span>
+            <span>e</span>
           </span>
           <span className="span-mother2">
-              <span>G</span>
-              <span>e</span>
-              <span>n</span>
-              <span>e</span>
-              <span>r</span>
-              <span>a</span>
-              <span>t</span>
-              <span>e</span>
+            <span>G</span>
+            <span>e</span>
+            <span>n</span>
+            <span>e</span>
+            <span>r</span>
+            <span>a</span>
+            <span>t</span>
+            <span>e</span>
           </span>
-      </button>
+        </button>
       </div>
       <div className={styles['Graph-right-side']}>
         <div className={`${styles['Bento_NIRGraph']} ${showGraph ? styles['show-element'] : ''}`}>
@@ -87,14 +89,14 @@ function GraphComponent() {
         </div>
 
         <div className={styles['Calculator-container']}>
-        <div className={`${styles['Bento_NIRGraph_Calculator']} ${showCalculator ? styles['show-calculator'] : ''}`}>
-          {/* Calculator content */}
-        </div>
-        <div className={`${styles['Bento_NIRGraph_Second_Calculator']} ${showSecondCalculator ? styles['show-second_calculator'] : ''}`}>
-          {/* Second calculator content */}
+          <div className={`${styles['Bento_NIRGraph_Calculator']} ${showCalculator ? styles['show-calculator'] : ''}`}>
+            {/* Calculator content */}
+          </div>
+          <div className={`${styles['Bento_NIRGraph_Second_Calculator']} ${showSecondCalculator ? styles['show-second_calculator'] : ''}`}>
+            {/* Second calculator content */}
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

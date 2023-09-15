@@ -3,7 +3,7 @@ import axios from 'axios';
 import './css/DifferenceGraphComponent.css';
 import styles from './css/Bento.module.css'
 
-const BASE_API_URL = "http://localhost:8000/";
+const BASE_API_URL = process.env.REACT_APP_API_ENDPOINT;
 
 function DifferenceGraphComponent() {
     const [graphUrl, setGraphUrl] = useState(null);

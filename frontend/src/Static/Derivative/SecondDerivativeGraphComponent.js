@@ -3,8 +3,9 @@ import axios from 'axios';
 import { saveAs } from 'file-saver';
 import '../css/SecondDerivativeGraphComponent.css';
 import '../css/SecondLoadButton.css';
-import styles from '../css/Bento.module.css'
-const BASE_API_URL = "http://localhost:8000/";
+import styles from '../css/Bento.module.css';
+
+const BASE_API_URL = process.env.REACT_APP_API_ENDPOINT;
 
 const SecondDerivativeGraphComponent = () => {
     const [graphUrl, setGraphUrl] = useState(null);

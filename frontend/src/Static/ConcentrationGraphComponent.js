@@ -6,6 +6,8 @@ import styles from './css/ConcentrationGraphComponent.module.css';
 import './css/ConcentrationGraphLoader.css';
 import './css/Button.css'
 
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
+
 function ConcentrationGraphComponent({ graphConcentrations }) {
     const { excelFile, excelConcentrations, setExcelConcentrations } = useExcelData();
     const { savedFilePath, setSavedFilePath } = useSavedFilePath();  // <-- この行を追加
@@ -50,7 +52,7 @@ function ConcentrationGraphComponent({ graphConcentrations }) {
         console.log("After appending data to FormData:", formData);
 
         try {
-            const saveResponse = await axios.post('http://localhost:8000/api/save_molar_absorptivity/', formData);
+            const saveResponse = await axios.post(`${apiEndpoint}api/save_molar_absorptivity/`, formData);
             console.log("Received saveResponse:", saveResponse.data);
             console.log("Received saveResponse status:", saveResponse.status);
             console.log("Full saveResponse data:", saveResponse.data);
@@ -65,9 +67,9 @@ function ConcentrationGraphComponent({ graphConcentrations }) {
                 console.error(`File saving failed: ${saveResponse.data.error || 'No error message available'}`);
             }
 
-            const graphResponse = await axios.post('http://localhost:8000/api/concentration_graph/', formData);
+            const graphResponse = await axios.post(`${apiEndpoint}api/concentration_graph/`, formData);
             if (graphResponse.data && graphResponse.data.graph_url) {
-                setGraphUrl("http://localhost:8000" + graphResponse.data.graph_url);
+                setGraphUrl(`${apiEndpoint.slice(0, -4)}${graphResponse.data.graph_url}`);
             }
             setShowGraph(true);
             setShowCalculator(true);
@@ -78,6 +80,7 @@ function ConcentrationGraphComponent({ graphConcentrations }) {
             console.error("An error occurred:", error);
         }
     };
+
 
     const excelConcentrationsArray = Array.isArray(excelConcentrations) ? excelConcentrations : Object.keys(excelConcentrations);
 
