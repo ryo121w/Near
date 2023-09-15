@@ -19,10 +19,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    BASE_DIR / "frontend/build/static"  # Reactのビルド成果物のstaticフォルダ
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 API_ENDPOINT = os.environ.get('DJANGO_API_ENDPOINT', 'http://localhost:8000/')
