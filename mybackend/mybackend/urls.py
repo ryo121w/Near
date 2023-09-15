@@ -25,7 +25,7 @@ router = DefaultRouter()
 router.register(r'spectrums', SpectrumViewSet)
 
 urlpatterns = [
-    re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name="index.html")),
 
 
     path('api/', include(router.urls)),
