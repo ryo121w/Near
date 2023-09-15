@@ -20,8 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 静的ファイルをどこに格納するか
 STATIC_URL = '/static/'
+# Reactのビルドファイルが含まれるディレクトリへのパス
+REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/build')
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),  # Reactのビルドディレクトリを指定
+    REACT_APP_DIR,
 ]
 
 
