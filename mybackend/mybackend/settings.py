@@ -19,7 +19,11 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'mybackend/staticfile'),  # staticfileディレクトリへのパス
+]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 API_ENDPOINT = os.environ.get('DJANGO_API_ENDPOINT', 'http://localhost:8000/')
@@ -30,7 +34,7 @@ API_ENDPOINT = os.environ.get('DJANGO_API_ENDPOINT', 'http://localhost:8000/')
 SECRET_KEY = "django-insecure-k8#-&(ytl$!c-vt9+j#ezk2ilq@#)1$5tezjcfa+xu8r(%z1$8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
