@@ -7,7 +7,6 @@ import App from './App';
 import DynamicGraph from './Dynamic/DynamicGraph';
 
 function EntryPage() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // ログイン状態を管理
     const [choice, setChoice] = useState(null);
 
 
